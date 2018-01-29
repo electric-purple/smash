@@ -5,7 +5,7 @@ module.exports = {
   plugins: [
     new webpack.NoEmitOnErrorsPlugin()
   ],
-  entry: ["src/index.js"],
+  entry: ["./src/index.js"],
   devtool: "cheap-module-source-map",
   devServer: {
     port: 8080,
