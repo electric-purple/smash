@@ -5,12 +5,7 @@ import { Provider } from "react-redux";
 import App from "./App";
 import Store from "./store/";
 
-// import "./index.css";
-// import registerServiceWorker from "./registerServiceWorker";
-
-// Let the reducers handle initial state
-const initialState = {};
-const store = Store(initialState);
+const store = Store();
 
 ReactDOM.render(
   <Provider store={store}>
@@ -19,4 +14,3 @@ ReactDOM.render(
   document.querySelector("SMASH")
 );
 
-// registerServiceWorker();
