@@ -1,0 +1,45 @@
+{
+  "name": "smash",
+  "version": "1.0.0",
+  "description": "Smash",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raedatoui/smash.git"
+  },
+  "keywords": [
+    "smash",
+    "friends",
+    "ragdoll"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/raedatoui/smash/issues"
+  },
+  "homepage": "https://github.com/raedatoui/smash#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-eslint": "^8.2.1",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "eslint": "^4.16.0",
+    "oimo": "^1.0.9",
+    "prettier": "^1.10.2",
+    "react": "^16.2.0",
+    "redux": "^3.7.2",
+    "three": "^0.89.0",
+    "webpack": "^3.10.0"
+  },
+  "scripts": {
+    "build": "webpack --config=./webpack.config.js",
+    "cleanup": "rm -rf dist/",
+    "start": "node dev-server.js",
+    "lint": "eslint src/**/*.js",
+    "fmt": "prettier --write \"src/**/*.js\"",
+    "stylelint": "stylelint src/**/*.js"
+  },  
+}
