@@ -1,15 +1,24 @@
 const webpack = require("webpack");
 const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+
 
 module.exports = {
   plugins: [
-    new webpack.NoEmitOnErrorsPlugin()
+    new webpack.NoEmitOnErrorsPlugin(),
+
+    // Generates an `index.html` file with the <script> injected.
+    new HtmlWebpackPlugin({
+      inject: true,
+      template: './public/index.html'
+    })
   ],
   entry: ["./src/index.js"],
   devtool: "cheap-module-source-map",
   devServer: {
     port: 8080,
-    contentBase: "./dist",
+    contentBase: "./public",
+    publicPath: "/",
     historyApiFallback: {
       disableDotRule: true
     }
@@ -28,8 +37,7 @@ module.exports = {
     ]
   },
   output: {
-    path: path.resolve(__dirname, "dist", "generated"),
-    filename: "bundle.js",
-    publicPath: "/generated/"
+    path: path.resolve(__dirname, "dist"),
+    filename: "smash.js"
   }
 };

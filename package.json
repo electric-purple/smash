@@ -28,6 +28,7 @@
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
     "eslint": "^4.16.0",
+    "html-webpack-plugin": "^2.30.1",
     "oimo": "^1.0.9",
     "prettier": "^1.10.2",
     "react": "^16.2.0",
@@ -44,5 +45,6 @@
     "start": "webpack-dev-server",
     "lint": "eslint src/**/*.js && stylelint src/**/*.js",
     "fmt": "prettier --write 'src/**/*.js'"
-  }
+  },
+  "dependencies": {}
 }
