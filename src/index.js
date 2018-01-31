@@ -3,9 +3,14 @@ import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 
 import App from "./App";
-import Store from "./store/";
+import makeStore from "./store/";
 
-const store = Store();
+// import "./index.css";
+// import registerServiceWorker from "./registerServiceWorker";
+
+// Let the reducers handle initial state
+const initialState = {};
+const store = makeStore(initialState);
 
 ReactDOM.render(
   <Provider store={store}>
@@ -14,3 +19,4 @@ ReactDOM.render(
   document.querySelector("#SMASH")
 );
 
+// registerServiceWorker();
