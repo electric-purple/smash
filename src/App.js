@@ -1,12 +1,12 @@
-import React from "react";
-import Artboard from "./components/Artboard";
+import Artboard from './components/Artboard';
+import Controls from './components/Controls';
 
-const App = ({ location }) =>
-  <div className="">
+const App = () => (
+  <main className="grid">
     <Artboard />
-    <main>
-      {/* routes or components or UI or whatever */}
-    </main>
-  </div>
+    <Controls />
+    we have smash
+  </main>
+);
 
 export default App;

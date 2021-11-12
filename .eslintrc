@@ -8,9 +8,8 @@
     "eslint:recommended",
     "plugin:import/errors",
     "plugin:import/warnings",
-    "plugin:react/recommended"
   ],
-  "parser": "babel-eslint",
+  // "parser": "babel-eslint",
   "parserOptions": {
     "ecmaFeatures": {
       "experimentalObjectRestSpread": true,
@@ -18,7 +17,7 @@
     },
     "sourceType": "module"
   },
-  "plugins": ["import", "react", "prettier"],
+  "plugins": ["import", "prettier"],
   "rules": {
     "import/no-unresolved": 0,
     "import/prefer-default-export": 0,
@@ -35,12 +34,12 @@
         ]
       }
     ],
-    "prettier/prettier": ["error", { "singleQuote": false }],
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+    "prettier/prettier": ["error", { "singleQuote": true }],
+    // "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }]
   },
   "settings": {
     "import/resolver": {
-      "babel-module": {}
+
     }
   }
 }
