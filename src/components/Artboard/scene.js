@@ -5,7 +5,9 @@ import { DirectionalLight } from 'three';
 // import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
 import cube from '../../models/Cube';
-import RagDoll from '../../models/RagDoll';
+// import RagDoll from '../../models/RagDoll';
+// let player = new RagDoll(Math.random() * 8 - 4, 30 + 20, Math.random() * 8 - 4);
+// this.Add(player);
 
 
 let camera, scene, renderer;
@@ -86,6 +88,7 @@ const createScene = (el) => {
 
   // camera.lookAt(scene.position); // default ...?
   scene.add(cube, light);
+  // scene.add(player);
 
   onResize();
 

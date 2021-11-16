@@ -1,11 +1,14 @@
-function createBox (sizeX = 1, sizeY = 1, sizeZ = 1, color = 0xffffff) {
-  const geometry = new THREE.BoxGeometry(sizeX, sizeY, sizeZ);
-  const material = new THREE.MeshPhongMaterial({ color });
+import { BoxGeometry, MeshPhongMaterial, Mesh } from 'three';
 
-  return new THREE.Mesh(geometry, material);
+
+function createBox(sizeX = 1, sizeY = 1, sizeZ = 1, color = 0xffffff) {
+  const geometry = new BoxGeometry(sizeX, sizeY, sizeZ);
+  const material = new MeshPhongMaterial({ color });
+
+  return new Mesh(geometry, material);
 }
 
-function createBoxBody (sizeX = 0.5, sizeY = 0.5, sizeZ = 0.5, mass = 1) {
+function createBoxBody(sizeX = 0.5, sizeY = 0.5, sizeZ = 0.5, mass = 1) {
   const shape = new CANNON.Box(new CANNON.Vec3(sizeX, sizeY, sizeZ));
 
   return new CANNON.Body({ shape, mass });
@@ -400,4 +403,5 @@ class Character {
 };
 
 
-export default 'lol';
+
+export default Character;
