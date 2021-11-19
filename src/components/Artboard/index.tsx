@@ -1,9 +1,14 @@
 // @see https://codepen.io/apatheticwes/pen/BapOQYz?editors=0011
 
 
-import { createScene, start, stop } from './scene';
-
+import { createWorld } from '../../system/world';
 import { FC, useRef, useEffect, useState } from 'react';
+
+// import cube from '../../models/Cube';
+// import RagDoll from '../../models/RagDoll';
+
+// let player = new RagDoll(Math.random() * 8 - 4, 30 + 20, Math.random() * 8 - 4);
+
 // import useMouse from '@/hooks/useMouse';
 
 // import PEGBOARD from '../../pegboard-demo';
@@ -28,8 +33,12 @@ const Artboard: FC<ArtboardOptions> = ({ className }) => {
   // });
 
   useEffect(() => {
-    createScene($el.current);
-    start();
+    // const scene = createScene($el.current);
+    const world = createWorld($el.current);
+
+    // scene.add(cube);
+
+    world.start();
   }, []);
 
 

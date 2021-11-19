@@ -1,3 +1,4 @@
+import * as CANNON from 'cannon-es';
 import { BoxGeometry, MeshPhongMaterial, Mesh } from 'three';
 
 
@@ -17,7 +18,7 @@ function createBoxBody(sizeX = 0.5, sizeY = 0.5, sizeZ = 0.5, mass = 1) {
 const skinColors = [
   0xe9c8bc,
   0xd69d70,
-  0x88583b
+  0x88583b,
 ];
 
 const clothingColors = [
@@ -25,7 +26,7 @@ const clothingColors = [
   0xFF5500,
   0x55ff00,
   0xeeeeee,
-  0x222222
+  0x222222,
 ];
 
 class Character {
@@ -400,8 +401,32 @@ class Character {
     this.head.add(this.hairT);
     this.head.add(this.hairB);
   }
-};
+}
 
+
+class RagDoll {
+  constructor(scene) {
+
+  }
+
+  add() {
+    for (let mesh of player.meshList) {
+      mesh.castShadow = true;
+      mesh.receiveShadow = true;
+      scene.add(mesh);
+    }
+
+    for (let body of player.bodyList) {
+      world.addBody(body);
+    }
+
+    for (let joint of player.jointList) {
+      world.addConstraint(joint);
+    }
+  }
+
+  tick() {}
+}
 
 
 export default Character;
