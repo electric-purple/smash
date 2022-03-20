@@ -1,3 +1,7 @@
+import { Clock } from 'three';
+
+const clock = new Clock();
+
 // let frameId;
 
 // const animate = () => {
@@ -17,31 +21,35 @@
 //   frameId = null;
 // };
 
+const createLoop = ({ camera, scene, renderer }) => {
+  let updatables = [];
 
-const createTimeline = ({ camera, scene, renderer }) => {
   const start = () => {
     renderer.setAnimationLoop(() => {
-      // tell every animated object to tick forward one frame
       tick();
-
-      // render a frame
       renderer.render(scene, camera);
     });
   };
 
-  const stop = () => {};
+  const stop = () => {
+    renderer.setAnimationLoop(null);
+  };
 
-  const setUpdatables = () => {};
+  const add = (x) => {
+    updatables.push(x);
+  };
 
   const tick = () => {
-    for (const object of this.updatables) {
-      object.tick();
+    const delta = clock.getDelta();
+
+    for (const object of updatables) {
+      object.tick(delta);
     }
   };
 
-  return [start, stop];
+  return { start, stop, add };
 };
 
 export {
-  createTimeline
+  createLoop
 };

@@ -1,42 +1,17 @@
 // import * as THREE from 'three';
-import { PerspectiveCamera, Scene, WebGLRenderer } from 'three';
-import { DirectionalLight } from 'three';
-// import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+import {
+  Scene,
+  WebGLRenderer,
+  PerspectiveCamera,
+  DirectionalLight,
+  HemisphereLight,
+  Color,
+} from 'three';
+
 // import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
-// import cube from '../models/Cube';
-// import RagDoll from '../models/RagDoll';
-// let player = new RagDoll(Math.random() * 8 - 4, 30 + 20, Math.random() * 8 - 4);
-// this.Add(player);
-
-
-// let camera;
-// let scene;
-// let renderer;
-// // let frameId;
-
-
-const createResizer = ({ el, camera, renderer }) => {
-  const onResize = () => {
-    const w = el.offsetWidth;
-    const h = el.offsetHeight;
-
-    renderer.setPixelRatio(window.devicePixelRatio);
-    renderer.setSize(w, h);
-    camera.aspect = w / h;
-    camera.updateProjectionMatrix();
-  };
-
-  window.addEventListener('resize', onResize);
-  onResize();
-
-  return () => {
-    window.removeEventListener('resize', onResize);
-  };
-};
 
 const createRenderer = () => {
-  // const r = new WebGLRenderer({ antialias: true, canvas: el });
   const renderer = new WebGLRenderer({ antialias: true });
 
   renderer.physicallyCorrectLights = true;
@@ -58,37 +33,30 @@ const createCamera = () => {
 };
 
 const createLights = () => {
-  // Create a directional light
   const light = new DirectionalLight('white', 8);
-  // move the light right, up, and towards us
+  const ambientLight = new HemisphereLight(
+    'white', // bright sky color
+    'darkslategrey', // dim ground color
+    5, // intensity
+  );
+
   light.position.set(10, 10, 10);
 
-  return light;
+  return { light, ambientLight };
 };
 
 const createScene = () => {
-  return new Scene();
+  const scene = new Scene();
 
-  // const onResize = () => resize(el);
-  // const light = createLights();
+  scene.background = new Color('papayawhip');
 
-  // renderer = createRenderer();
-  // camera = createCamera();
-  // scene = new Scene();
-  // scene.add(light);
-
-  // onResize();
-
-  // window.addEventListener('resize', onResize);
-  // el.append(renderer.domElement);
-
-  // return scene;
+  return scene;
 };
 
-const destroyScene = (el) => {
-  stop();
+const destroyScene = () => {
+  // stop();
   // window.removeEventListener('resize', resize); // onResize
-  el.removeChild(renderer.domElement);
+  // el.removeChild(renderer.domElement);
   // scene.remove(cube);
   // geometry.dispose();
   // material.dispose();
@@ -100,6 +68,5 @@ export {
   createRenderer,
   createCamera,
   createLights,
-  createResizer,
   destroyScene,
 };

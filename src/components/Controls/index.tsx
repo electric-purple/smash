@@ -5,8 +5,13 @@ interface ControlsProps {
 }
 
 const Controls: FC<ControlsProps> = ({ className }) => {
-  return <div className={className}>Controls     we have smash
-</div>;
+  return (
+    <div className={className}>
+      Controls     we have smash
+      <button>start</button>
+      <button>stop</button>
+    </div>
+  );
 };
 
 export default Controls;

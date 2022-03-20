@@ -1,5 +1,10 @@
 import * as CANNON from 'cannon-es';
-import { BoxGeometry, MeshPhongMaterial, Mesh } from 'three';
+import {
+  BoxGeometry,
+  MeshPhongMaterial,
+  Mesh,
+  Group
+} from 'three';
 
 
 function createBox(sizeX = 1, sizeY = 1, sizeZ = 1, color = 0xffffff) {
@@ -406,26 +411,33 @@ class Character {
 
 class RagDoll {
   constructor(scene) {
+    const group = new Group();
+    const ragdoll = new Character();
 
-  }
-
-  add() {
-    for (let mesh of player.meshList) {
+    for (let mesh of ragdoll.meshList) {
       mesh.castShadow = true;
       mesh.receiveShadow = true;
-      scene.add(mesh);
+      group.add(mesh); // scene.add(
     }
 
-    for (let body of player.bodyList) {
+    for (let body of ragdoll.bodyList) {
       world.addBody(body);
     }
 
-    for (let joint of player.jointList) {
+    for (let joint of ragdoll.jointList) {
       world.addConstraint(joint);
     }
   }
 
-  tick() {}
+  tick() {
+    for (let a = 0; a < this.bodyList.length; a++) {
+      this.meshList[a].position.copy(this.bodyList[a].position);
+      this.meshList[a].quaternion.copy(this.bodyList[a].quaternion);
+    }
+
+    this.pivot.rotation.y += 0.005;
+    this.world.step(this.dt);
+  }
 }
 
 
