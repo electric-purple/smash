@@ -1,0 +1,34 @@
+{
+	"name": "smash",
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
+	},
+	"devDependencies": {
+		"@dimforge/rapier3d-compat": "^0.10.0",
+		"@sveltejs/adapter-auto": "next",
+		"@sveltejs/kit": "next",
+		"@threlte/core": "^4.3.3",
+		"@threlte/extras": "^4.5.1",
+		"@threlte/preprocess": "^0.0.2",
+		"@threlte/rapier": "^0.3.2",
+		"@tweakpane/core": "^1.1.0",
+		"@types/three": "^0.146.0",
+		"open-props": "^1.5.1",
+		"postcss": "^8.4.19",
+		"postcss-jit-props": "^1.0.8",
+		"postcss-load-config": "^4.0.1",
+		"svelte": "^3.54.0",
+		"svelte-check": "^2.7.1",
+		"svelte-preprocess": "^4.10.7",
+		"three": "^0.146.0",
+		"tslib": "^2.3.1",
+		"tweakpane": "^3.1.0",
+		"typescript": "^4.7.4",
+		"vite": "^4.0.0"
+	},
+	"type": "module"
+}
