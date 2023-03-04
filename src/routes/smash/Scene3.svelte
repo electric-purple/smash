@@ -9,8 +9,8 @@
 	import Ground from './Ground.svelte'
 
 
-import { inflate } from 'zlib.es';
-const rawData = inflate(compressedData);
+// import { inflate } from 'zlib.es';
+// const rawData = inflate(compressedData);
 
 
 /*   import { useGltf } from '@threlte/extras';

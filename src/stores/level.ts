@@ -28,7 +28,7 @@ const levels: Readable<Level[]> = readable([
   { xxx: 2 }
 ]);
 
-const current = writable(0);
+const current: number = writable(0);
 /* */
 const go = {
   next: () => current.update(n => Math.min(n + 1, 2)),
