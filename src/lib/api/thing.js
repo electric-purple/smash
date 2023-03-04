@@ -1,9 +1,9 @@
-import { supabase } from "./supabaseClient";
+/* import { supabase } from "./supabaseClient";
 
 const game = async (req, res) => {
   const id = req.query.id;
   switch (req.method) {
-    case 'PATCH': 
+    case 'PATCH':
       let { data: patchGameData, error: PatchError } = await supabase
         .from("games")
         .update(JSON.parse(req.body))
@@ -16,7 +16,7 @@ const game = async (req, res) => {
         }
     break;
 
-    case 'GET': 
+    case 'GET':
       let { data: gameData, error: GetError } = await supabase
         .from("games")
         .select("*")
@@ -32,3 +32,4 @@ const game = async (req, res) => {
 };
 
 export default game;
+ */

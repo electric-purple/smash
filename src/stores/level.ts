@@ -3,8 +3,9 @@
 // level
 // scores
 
-import { readable, derived, writable } from "svelte/store";
-import type { Readable } from "svelte/store"; // useful for things set "internally" (ie not by user).  Examples: mouse poition, current time, etc
+// import { readable, derived, writable, type Writable } from "svelte/store";
+import { derived, readable, writable } from "svelte/store";
+import type { Readable, Writable } from "svelte/store";
 
 interface Level {
   xxx: number;
@@ -28,7 +29,7 @@ const levels: Readable<Level[]> = readable([
   { xxx: 2 }
 ]);
 
-const current: number = writable(0);
+const current: Writable<number> = writable(0);
 /* */
 const go = {
   next: () => current.update(n => Math.min(n + 1, 2)),

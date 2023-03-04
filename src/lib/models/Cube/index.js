@@ -20,7 +20,7 @@ const createMaterial = () => {
 
   const material = new MeshStandardMaterial({
     color: 'purple',
-    // map: texture,
+    map: texture,
   });
 
   console.log(material);

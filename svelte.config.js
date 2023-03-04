@@ -1,6 +1,5 @@
 import path from 'path';
-// import adapter from '@sveltejs/adapter-auto';
-import adapter from '@sveltejs/adapter-netlify';
+import adapter from '@sveltejs/adapter-vercel';
 import preprocess from 'svelte-preprocess';
 
 
@@ -11,9 +10,7 @@ const config = {
 	}),
 
 	kit: {
-		adapter: adapter({
-		  // ... opts
-		}),
+		adapter: adapter(),
 
 		alias: {
 			$stores: path.resolve("./src/stores"),
