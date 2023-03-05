@@ -410,7 +410,7 @@ class Character {
 
 
 class RagDoll {
-  constructor(scene) {
+  constructor() {
     const group = new Group();
     const ragdoll = new Character();
 

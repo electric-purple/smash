@@ -1,6 +1,8 @@
 import { writable } from 'svelte/store';
 //import type firebase from 'firebase/app';
-import type { User } from 'firebase/auth';
+
+// import type { User } from 'firebase/auth';
+type User = string;
 
 const authStore = writable<{
 	isLoggedIn: boolean;
@@ -15,9 +17,6 @@ export default {
 	subscribe: authStore.subscribe,
 	set: authStore.set
 };
-
-
-
 
 
 

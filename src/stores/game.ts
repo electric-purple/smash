@@ -5,7 +5,7 @@
 // perf / video
 // preferences
 
-import { readable, derived, writable } from "svelte/store";
+import { writable } from "svelte/store";
 
 let storedTheme;
 

@@ -5,39 +5,18 @@
 	import { current } from '$stores/level';
 	import type { ComponentType } from "svelte";
 
-  // const load: Promise<ComponentType> = async (x: string) => (await import(x)).default;
-	// const scenes = [
-	// 	{
-	// 		load: async () => (await import('./Scene.svelte')).default,
-	// 		thing: () => load('./Scene.svelte')
-	// 	},
-	// 	{
-	// 		// ...,
-	// 	}
-	// ];
-
-
-
-  // const load = async (name: string) => (await import(name)).default;
-	// const scenes = {
-	// 	() => load('./Scene.svelte'),
-	// 	() => load('./Scene2.svelte'),
-	// 	() => load('./Scene3.svelte'),
-	// ];
-	// let scene = scenes[$current];
-
-
 	interface Scenes {
-		[key: number]: () => Promise<ComponentType>;
+	  // Promise is for the dynamic import (ie. "await")
+		// Record is b/c ES modules export key / value pairs, while 'default' is the one of interest, here (afaik it's how Svelte exports its components)
+		// ComponentType is the known type of the Svelte component format
+		[key: number]: () => Promise<Record<'default', ComponentType>>;
 	}
-	// interface Scenes {};
+
 	const scenes: Scenes = {
 		0: () => import('./Scene.svelte'),
 		1: () => import('./Scene2.svelte'),
 		2: () => import('./Scene3.svelte')
 	};
-	// let curren: string = 'a';
-
 
 	// import { useTweakpane } from '$lib/utils/gui'
 	// const { pane, action } = useTweakpane()
@@ -47,8 +26,9 @@
 	// 	lineCount: 3
 	// })
 
+// const json = scene.toJSON();
+// const scene = new THREE.ObjectLoader().parse( json );
 
-	// const x = Scene.toJSON();
 </script>
 
 <!-- "DAT.GUI" -->
@@ -60,14 +40,6 @@
 		{#await scenes[$current]() then module}
 			<svelte:component this={module.default}/>
 		{/await}
-
-		<!-- {#if $current == 0 }
-		<Scene>
-		{:else if $current == 1 }
-		<Scene2 />
-		{:else if $current == 2 }
-		<Scene3 />
-		{/if } -->
 
 		<HTML slot="fallback" transform>
 			<p>

@@ -15,7 +15,6 @@
 	export let height = 1.7
 	export let speed = 6
 
-	const name = 'Xbot'
 	const url = 'https://threejs.org/examples/models/gltf/Xbot.glb'
 
 	const { gltf, actions } = useGltfAnimations(({ actions }) => {
@@ -24,9 +23,9 @@
 		// zombie actions: Attack, Death, Idle, Walk
 		// Xbot actions: agree, headShake, idle, run, sad_pose, sneak_pose, walk
 		actions[currentAction]?.play()
-	})
-	let scene
-	let currentAction = 'idle'
+	});
+	let scene;
+	let currentAction = 'idle';
 
 	let forward = 0
 	let backward = 0
@@ -98,7 +97,7 @@
 	 * The window keyUp handler
 	 * @param {KeyboardEvent} e
 	 */
-	function onKeyUp(e) {
+	function onKeyUp(e: KeyboardEvent) {
 		switch (e.key) {
 			case 's':
 				backward = 0
