@@ -20,7 +20,7 @@
 		Vector3
 	} from 'three'
 	import Door from './Door.svelte'
-	import Ground from './Ground.svelte'
+	// import Ground from '../Ground.svelte'
 	import Player from './Player.svelte'
 
 	let targetGroup: ThreeGroup
@@ -61,22 +61,15 @@
 
 <Debug depthTest={false} depthWrite={false} />
 
-<!--
-	The ground needs to be on both group 15 which is the group
-	to detect the groundedness of the player as well as on group
-	0 which is the group that the player is actually physically
-	interacting with.
- -->
-<CollisionGroups groups={[0, 15]}>
-	<Ground />
-</CollisionGroups>
 
 <!--
 	All physically interactive stuff should be on group 0
 -->
 <CollisionGroups groups={[0]}>
+	<!--PLAYER -->
 	<Player bind:playerMesh position={{ z: -3, y: 2 }} />
 
+	<!-- DOOR -->
 	<Door />
 
 	<!-- WALLS -->

@@ -2,13 +2,16 @@
 	import { AmbientLight, DirectionalLight, Mesh } from '@threlte/core'
 	import { AutoColliders, CollisionGroups } from '@threlte/rapier'
 	import { BoxGeometry, MeshStandardMaterial } from 'three'
-	// import Door from '../smash/Door.svelte'
 	import Player from './Player2.svelte'
 </script>
 
 <DirectionalLight shadow position={{ y: 20, x: 8, z: -3 }} />
 <AmbientLight intensity={0.2} />
 
+<!--
+	All physically interactive stuff should be on group 0
+	All non-interactive stuff should be on group 15 (ground)
+-->
 <CollisionGroups groups={[0, 15]}>
 	<AutoColliders shape={'cuboid'} position={{ y: -0.5 }}>
 		<Mesh
@@ -19,10 +22,12 @@
 	</AutoColliders>
 </CollisionGroups>
 
+<!--
+	All physically interactive stuff should be on group 0
+-->
 <CollisionGroups groups={[0]}>
 	<!-- position={{ x: 2 }} -->
 	<Player />
-	<!-- <Door /> -->
 
 	<!-- WALLS -->
 	<AutoColliders shape={'cuboid'}>

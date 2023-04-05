@@ -1,9 +1,13 @@
 <script lang="ts">
 	import { Canvas } from '@threlte/core'
-	import { Debug, World } from '@threlte/rapier'
+	import { Debug, World, CollisionGroups } from '@threlte/rapier'
 	import { HTML } from '@threlte/extras'
 	import { current } from '$stores/level';
 	import type { ComponentType } from "svelte";
+
+
+	import Ground from './Ground.svelte'
+
 
 	interface Scenes {
 	  // Promise is for the dynamic import (ie. "await")
@@ -13,9 +17,9 @@
 	}
 
 	const scenes: Scenes = {
-		0: () => import('./Scene.svelte'),
-		1: () => import('./Scene2.svelte'),
-		2: () => import('./Scene3.svelte')
+		0: () => import('./scene1/'),
+		1: () => import('./scene2/'),
+		2: () => import('./scene3/')
 	};
 
 	// import { useTweakpane } from '$lib/utils/gui'
@@ -40,6 +44,17 @@
 		{#await scenes[$current]() then module}
 			<svelte:component this={module.default}/>
 		{/await}
+
+		<!--
+			The ground needs to be on both group 15 which is the group
+			to detect the groundedness of the player as well as on group
+			0 which is the group that the player is actually physically
+			interacting with.
+		-->
+		<CollisionGroups groups={[0, 15]}>
+			<Ground />
+		</CollisionGroups>
+
 
 		<HTML slot="fallback" transform>
 			<p>

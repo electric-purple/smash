@@ -6,7 +6,7 @@
 	import { Environment, GLTF } from '@threlte/extras'
 	import { AutoColliders, CollisionGroups, RigidBody } from '@threlte/rapier'
 	import { BoxGeometry, GridHelper, MeshStandardMaterial } from 'three'
-	import Ground from './Ground.svelte'
+	// import Ground from '../Ground.svelte'
 
 
 // import { inflate } from 'zlib.es';
@@ -50,7 +50,7 @@
 
 {#key resetCounter}
 	<!-- Collider A -->
-	<CollisionGroups memberships={[1]} filter={[2]}>
+	<CollisionGroups groups={[0]}>
 		<RigidBody position={{ y: 1.5, z: 1 - Math.random() * 2 }}>
 			<AutoColliders shape={'cuboid'}>
 				<Mesh
@@ -65,7 +65,7 @@
 	</CollisionGroups>
 
 	<!-- Collider B -->
-	<CollisionGroups memberships={[2]} filter={[1, 3]}>
+	<CollisionGroups groups={[0]}>
 		<RigidBody position={{ y: 4.5, z: 1 - Math.random() * 2 }}>
 			<AutoColliders shape={'cuboid'}>
 				<Mesh
@@ -80,7 +80,14 @@
 	</CollisionGroups>
 
 	<!-- Collider C -->
-	<CollisionGroups memberships={[3]} filter={[2]}>
+  <!--
+	  NOTE:
+	memberships={[3]} -- the group(s) that this collider belongs to
+	filter={[2]}      -- this'll be the group(s) that this collider will interact with
+	  OR
+	groups={[3]}      -- is the short hand to set memberships and filter to the same value
+	-->
+	<CollisionGroups groups={[0]}>
 		<RigidBody position={{ y: 3, z: 1 - Math.random() * 2 }}>
 			<AutoColliders shape={'cuboid'}>
 				<Mesh
@@ -97,6 +104,6 @@
 
 <Object3DInstance object={new GridHelper(50)} />
 
-<CollisionGroups groups={[1, 2, 3]}>
+<!-- <CollisionGroups groups={[1, 2, 3]}>
 	<Ground />
-</CollisionGroups>
+</CollisionGroups> -->
