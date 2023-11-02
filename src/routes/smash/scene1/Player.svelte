@@ -13,10 +13,9 @@
 	} from 'three'
 
 	export let position: Position | undefined = undefined
-
 	export let playerMesh: ThreeMesh
-	let ballMesh: ThreeMesh
 
+	let ballMesh: ThreeMesh
 	let rigidBody: RapierRigidBody
 
 	const playerPos = new Vector3()

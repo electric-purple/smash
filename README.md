@@ -14,6 +14,7 @@
 - https://github.com/threlte/threlte/tree/main/apps/docs/src/examples/rapier/world
 - https://threlte.xyz/examples
 - https://codesandbox.io/s/vttvo?file=/App.svelte
+- https://github.com/grischaerbe/threlter
 
 
 ### CSS

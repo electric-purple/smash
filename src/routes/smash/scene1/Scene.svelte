@@ -22,6 +22,7 @@
 	import Door from './Door.svelte'
 	// import Ground from '../Ground.svelte'
 	import Player from './Player.svelte'
+	// import RagDoll from './RagDoll.svelte'
 
 	let targetGroup: ThreeGroup
 
