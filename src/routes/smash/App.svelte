@@ -3,10 +3,8 @@
 	import { Debug, World, CollisionGroups } from '@threlte/rapier'
 	import { HTML } from '@threlte/extras'
 	import { current } from '$stores/level';
-	import type { ComponentType } from "svelte";
-
-
 	import Ground from './Ground.svelte'
+	import type { ComponentType } from "svelte";
 
 
 	interface Scenes {
@@ -17,9 +15,9 @@
 	}
 
 	const scenes: Scenes = {
-		0: () => import('./scene1/'),
-		1: () => import('./scene2/'),
-		2: () => import('./scene3/')
+		0: () => import('./test'),
+		// 1: () => import('./_scene1'),
+		// 2: () => import('./_scene3')
 	};
 
 	// import { useTweakpane } from '$lib/utils/gui'
