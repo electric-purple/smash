@@ -15,7 +15,7 @@
 	}
 
 	const scenes: Scenes = {
-		0: () => import('./test'),
+		// 0: () => import('./test'),
 		// 1: () => import('./_scene1'),
 		// 2: () => import('./_scene3')
 	};
