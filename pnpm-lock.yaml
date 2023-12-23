@@ -28,6 +28,9 @@ dependencies:
   '@types/three':
     specifier: ^0.146.0
     version: 0.146.0
+  camera-controls:
+    specifier: ^2.7.3
+    version: 2.7.3(three@0.158.0)
   open-props:
     specifier: ^1.6.16
     version: 1.6.16
@@ -734,6 +737,14 @@ packages:
   /camelcase@7.0.1:
     resolution: {integrity: sha512-xlx1yCK2Oc1APsPXDL2LdlNP6+uu8OCDdhOBSVT279M/S+y75O30C2VuD8T2ogdePBBl7PfPF4504tnLgX3zfw==}
     engines: {node: '>=14.16'}
+    dev: false
+
+  /camera-controls@2.7.3(three@0.158.0):
+    resolution: {integrity: sha512-L4mxjBd3u8qiOLozdWrH2P8ZybSsDXBF7iyNyqNEFJhPUkovmuARWR8JTc1B/qlclOIg6FvZZA/0uAZMMim0mw==}
+    peerDependencies:
+      three: '>=0.126.1'
+    dependencies:
+      three: 0.158.0
     dev: false
 
   /caseless@0.12.0:

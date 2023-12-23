@@ -4,6 +4,8 @@
 	import { HTML } from '@threlte/extras'
 	import { current } from '$stores/level';
 	import Ground from './Ground.svelte'
+
+	import LevelDebug from '$components/Debug.svelte';
 	import type { ComponentType } from "svelte";
 
 
@@ -18,6 +20,9 @@
 		0: () => import('./test'),
 		// 1: () => import('./_scene1'),
 		// 2: () => import('./_scene3')
+		1: () => import('./test'), // just re-import the same scene for now.
+		2: () => import('./test'), // ... prob a better way to handle this, but leaving
+		                           // this way here / commented for now, for ref
 	};
 
 	// import { useTweakpane } from '$lib/utils/gui'
@@ -35,6 +40,8 @@
 
 <!-- "DAT.GUI" -->
 <!-- <div use:action /> -->
+<LevelDebug />
+
 <Canvas>
 	<World>
 		<Debug depthTest={false} depthWrite={false} />

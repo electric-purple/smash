@@ -2,7 +2,7 @@
 <!-- IT _MIGHT_ ALSO BE INHERITED BY OTHER ROUTES ...?  -->
 
 <script lang="ts">
-	import Header from '$src/components/Header.svelte';
+	import Header from '$src/components/+UI/Header.svelte';
 	import '$src/app.css';
 
 
