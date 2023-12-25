@@ -3,8 +3,8 @@
 	import { Debug, World, CollisionGroups } from '@threlte/rapier'
 	import { HTML } from '@threlte/extras'
 	import { current } from '$stores/level';
-	import Ground from './Ground.svelte'
 
+	import Ground from     '$components/+common/Ground.svelte';
 	import LevelDebug from '$components/Debug.svelte';
 	import type { ComponentType } from "svelte";
 
@@ -17,11 +17,12 @@
 	}
 
 	const scenes: Scenes = {
-		0: () => import('./test'),
+		// 0: () => import('./test'),
 		// 1: () => import('./_scene1'),
 		// 2: () => import('./_scene3')
-		1: () => import('./test'), // just re-import the same scene for now.
-		2: () => import('./test'), // ... prob a better way to handle this, but leaving
+    0: () => import('./Scene2.svelte'),
+		1: () => import('./Scene2.svelte'), // just re-import the same scene for now.
+		2: () => import('./Scene2.svelte'), // ... prob a better way to handle this, but leaving
 		                           // this way here / commented for now, for ref
 	};
 
@@ -42,32 +43,13 @@
 <!-- <div use:action /> -->
 <LevelDebug />
 
-<Canvas>
+<!-- MOVING TO LAYOUT ...? -->
+<!-- <Canvas>
 	<World>
-		<Debug depthTest={false} depthWrite={false} />
+		<Debug depthTest={false} depthWrite={false} /> -->
 
 		{#await scenes[$current]() then module}
 			<svelte:component this={module.default}/>
 		{/await}
 
-		<!--
-			The ground needs to be on both group 15 which is the group
-			to detect the groundedness of the player as well as on group
-			0 which is the group that the player is actually physically
-			interacting with.
-		-->
-		<CollisionGroups groups={[0, 15]}>
-			<Ground />
-		</CollisionGroups>
-
-
-		<HTML slot="fallback" transform>
-			<p>
-				It seems your browser<br />
-				doesn't support WASM.<br />
-				I'm sorry.
-			</p>
-		</HTML>
-	</World>
-</Canvas>
 
