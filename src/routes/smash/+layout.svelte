@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { Canvas } from '@threlte/core'
+	import { T } from '@threlte/core'
 	import { AudioListener, Suspense, HTML } from '@threlte/extras';
   import { Debug, World, CollisionGroups } from '@threlte/rapier';
 
@@ -43,6 +44,9 @@
 			{#if $debug}
 				<Debug depthTest={false} depthWrite={false} />
 			{/if}
+
+			<T.DirectionalLight position={{ y: 20, x: 8, z: -3 }} />
+			<T.AmbientLight intensity={0.2} />
 
       <Suspense final>
 				<LoadingUi slot="fallback" />

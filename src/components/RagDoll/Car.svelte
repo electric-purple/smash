@@ -15,7 +15,7 @@
 	import MuscleCarWheel from './Models/MuscleCarWheel.svelte'
 	import RaycastVehicleController from './RaycastVehicleController/RaycastVehicleController.svelte'
 	import WheelRotation from './WheelRotation.svelte'
-	import Sun from './Sun.svelte'
+	// import Sun from './Sun.svelte'
 
 
 	let carCam: PerspectiveCamera
@@ -125,7 +125,7 @@
 	<svelte:fragment let:carState>
 		<slot {carState} />
 
-		<Sun {carState} />
+		<!-- <Sun {carState} /> -->
 	</svelte:fragment>
 
 </RaycastVehicleController>
