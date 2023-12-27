@@ -17,39 +17,19 @@
 	}
 
 	const scenes: Scenes = {
-		// 0: () => import('./test'),
-		// 1: () => import('./_scene1'),
-		// 2: () => import('./_scene3')
     0: () => import('./Scene2.svelte'),
 		1: () => import('./Scene2.svelte'), // just re-import the same scene for now.
 		2: () => import('./Scene2.svelte'), // ... prob a better way to handle this, but leaving
 		                           // this way here / commented for now, for ref
 	};
-
-	// import { useTweakpane } from '$lib/utils/gui'
-	// const { pane, action } = useTweakpane()
-	// pane.addBlade({
-	// 	view: 'text',
-	// 	text: 'Use the arrow keys to move around',
-	// 	lineCount: 3
-	// })
-
-// const json = scene.toJSON();
-// const scene = new THREE.ObjectLoader().parse( json );
-
 </script>
 
-<!-- "DAT.GUI" -->
-<!-- <div use:action /> -->
+<!-- ### -->
+
 <LevelDebug />
 
-<!-- MOVING TO LAYOUT ...? -->
-<!-- <Canvas>
-	<World>
-		<Debug depthTest={false} depthWrite={false} /> -->
-
-		{#await scenes[$current]() then module}
-			<svelte:component this={module.default}/>
-		{/await}
+{#await scenes[$current]() then module}
+	<svelte:component this={module.default}/>
+{/await}
 
 

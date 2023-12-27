@@ -8,6 +8,7 @@
 	import { dev } from  '$app/environment';
 	import { appState } from '$stores/app';
 
+	// import Environment from        '$components/+common/Environment.svelte';
 	import Ground from             '$components/+common/Ground.svelte';
 	import Renderer from           '$components/Renderer.svelte';
 	import KeyboardNavigation from '$components/+UI/KeyboardNavigation.svelte';
@@ -50,8 +51,9 @@
 
       <Suspense final>
 				<LoadingUi slot="fallback" />
-
 				<AudioListener />
+				<!-- <Environment /> -->
+
 				<AudioProvider>
 					<KeyboardNavigation>
             <slot />
@@ -72,8 +74,7 @@
       <HTML slot="fallback" transform>
         <p>
           It seems your browser<br />
-          doesn't support WASM.<br />
-          I'm sorry.!!
+          doesn't support WASM.
         </p>
       </HTML>
 
