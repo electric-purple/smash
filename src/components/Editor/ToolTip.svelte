@@ -1,23 +1,21 @@
-<div
-	class="hidden group-hover:flex absolute pr-[10px] left-0 top-0 -translate-x-full text-orange font-mono text-[0.6em] leading-[1em] h-full items-center w-auto whitespace-nowrap"
->
+<div clss="tooltip">
 	<slot />
 </div>
 
 <style>
+		/* class="hidden group-hover:flex absolute pr-[10px] left-0 top-0 -translate-x-full text-orange font-mono text-[0.6em] leading-[1em] h-full items-center w-auto whitespace-nowrap" */
+
 	div {
-		display: hidden;
+		display: none;
 		position: absolute;
-		padding: 10px;
+		padding-right: 10px;
 		left: 0;
 		top: 0;
-		-translate-x: full;
+		transform: translateX(100%);
 		color: orange;
 		height: 100%;
-		/* items-center w-auto whitespace-nowrap" */
+		/* group-hover:flex  ... items-center w-auto whitespace-nowrap" */
 	}
 
-	div:hover {
-		display: flex
-	}
+
 </style>

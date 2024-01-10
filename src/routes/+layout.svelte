@@ -2,13 +2,18 @@
 <!-- IT'S INHERITED BY OTHER ROUTES -->
 
 <script lang="ts">
-	import Header from '$src/components/layout/Header.svelte';
+	import Navigation from '$components/layout/Navigation.svelte';
 	import '$src/app.css';
 </script>
 
-<!-- ### -->
 
-<Header />
+<!-- ############################################################# -->
+
+
+<header>
+	<Navigation />
+	<slot name="xxxx" />
+</header>
 
 <main class="cover">
 	<!-- <slot name="canvas" /> -->
@@ -18,3 +23,14 @@
 <div class="portal cover" id="portal-target">
 	<slot name="ui" />
 </div>
+
+
+<!-- ############################################################# -->
+
+
+<style>
+	header {
+		position: absolute;
+		z-index: var(--layer-5);
+	}
+</style>
