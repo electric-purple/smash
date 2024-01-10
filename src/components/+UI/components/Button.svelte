@@ -4,7 +4,7 @@
 	import { appState } from '$stores/app'
 	import { useKeyboardNavigation } from '../KeyboardNavigation.svelte'
 
-	export let href: string | undefined = undefined
+	// export let href: string | undefined = undefined
 	export let disabled = false
 	export let audioCues = true
 	export let preventFocusOnFocusLost = false
@@ -52,10 +52,7 @@
 	const { keyboardNavigationAction } = useKeyboardNavigation()
 </script>
 
-<svelte:element
-	this={href ? 'a' : 'button'}
-	role="button"
-	{href}
+<button
 	{disabled}
 	use:keyboardNavigationAction={{
 		forceFocus: forceFocusOnMount,
@@ -71,4 +68,4 @@
 	)}
 >
 	<slot />
-</svelte:element>
+</button>

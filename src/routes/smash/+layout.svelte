@@ -3,6 +3,9 @@
 	import { T } from '@threlte/core'
 	import { AudioListener, Suspense, HTML } from '@threlte/extras';
   import { Debug, World, CollisionGroups } from '@threlte/rapier';
+  // import { Pane, Button } from 'svelte-tweakpane-ui'
+  // @tweakpane/core svelte-tweakpane-ui  tweakpane
+
 
 	import { page } from '$app/stores';
 	import { dev } from  '$app/environment';
@@ -33,6 +36,10 @@
 
 <svelte:window on:visibilitychange={onVisibilityChange} />
 
+<!-- <Pane
+  title="Transitions"
+  position="fixed"
+> -->
 
 	<Canvas
 		rendererParameters={{
@@ -48,42 +55,37 @@
 
 			<T.DirectionalLight position={{ y: 20, x: 8, z: -3 }} />
 			<T.AmbientLight intensity={0.2} />
+				<!-- <Environment /> -->
 
       <Suspense final>
 				<LoadingUi slot="fallback" />
 				<AudioListener />
-				<!-- <Environment /> -->
 
 				<AudioProvider>
 					<KeyboardNavigation>
-            <slot />
+						<slot />
 					</KeyboardNavigation>
 				</AudioProvider>
 			</Suspense>
 
-      <!--
-        The ground needs to be on both group 15 which is the group
-        to detect the groundedness of the player as well as on group
-        0 which is the group that the player is actually physically
-        interacting with.
-      -->
-      <CollisionGroups groups={[0, 15]}>
-        <Ground />
-      </CollisionGroups>
+			<!--
+				The ground needs to be on both group 15 which is the group
+				to detect the groundedness of the player as well as on group
+				0 which is the group that the player is actually physically
+				interacting with.
+			-->
+			<CollisionGroups groups={[0, 15]}>
+				<Ground />
+			</CollisionGroups>
 
       <HTML slot="fallback" transform>
-        <p>
-          It seems your browser<br />
-          doesn't support WASM.
-        </p>
-      </HTML>
+				<p>
+					It seems your browser<br />
+					doesn't support WASM.
+				</p>
+			</HTML>
 
 		</World>
 
 		<Renderer />
 	</Canvas>
-
-	<div
-		class="leading-tight absolute top-0 left-0 w-full h-full z-10 text-[22px] lg:text-[26px] xl:text-[28px] 2xl:text-[30px] [&_button]:pointer-events-auto [&_a]:pointer-events-auto p-[15px] pointer-events-none select-none"
-		id="car-ui-portal-target"
-	/>

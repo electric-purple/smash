@@ -1,8 +1,7 @@
 <script lang="ts">
 	import { c } from '$lib/utils/classes'
 	import { trackElementPrototypes} from '$components/TrackElements/elements'
-	import Button from           '$components/+UI/components/Button.svelte';
-	import PlainButton from      '$components/+UI/components/PlainButton.svelte';
+	import Button from                    '$components/+UI/components/Button.svelte';
 	import { useTrackEditor } from '../context'
 
 	import type { TrackElementCategory, TrackElementPrototypeType } from '$components/TrackElements/elements';
@@ -43,7 +42,7 @@
 				{#each category.elements as element, index}
 					{@const isFirst = index === 0}
 					{@const isLast = index === category.elements.length - 1}
-					<PlainButton
+					<Button
 						class={c(
 							'border-orange border-x-2 border-b-2 p-[6px] bg-blue-950',
 							isFirst && 'rounded-t-md border-t-2'
@@ -64,11 +63,11 @@
 							alt={element}
 							class="!h-[56px] !w-[56px]"
 						/>
-					</PlainButton>
+					</Button>
 				{/each}
 			{/if}
 
-			<PlainButton
+			<Button
 				on:click={() => {
 					if (selectedCategory === category) {
 						selectedCategory = undefined
@@ -86,7 +85,7 @@
 				disabled={$validated}
 			>
 				<img src={category.previewImage} alt={category.name} class="!h-[56px] !w-[56px]" />
-			</PlainButton>
+			</Button>
 		</div>
 	{/each}
 </div>

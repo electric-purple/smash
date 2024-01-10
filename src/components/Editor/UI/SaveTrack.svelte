@@ -1,6 +1,5 @@
 <script lang="ts">
-	import Button from        '$components/+UI/components/Button.svelte';
-	import SpecialButton from '$components/+UI/components/SpecialButton.svelte';
+	import Button from '$components/+UI/components/Button.svelte';
 	import { useTrackEditor } from '../context'
 
 	const { trackData } = useTrackEditor()
@@ -11,6 +10,6 @@
 	}
 </script>
 
-<SpecialButton class="w-max" style="inverted" forceFocusOnMount on:click={onClick}>
+<Button class="w-max" style="inverted" forceFocusOnMount on:click={onClick}>
 	Export Track
-</SpecialButton>
+</Button>

@@ -4,11 +4,9 @@
 	import { c } from '$lib/utils/classes'
 	import { formatTime } from '$lib/utils/formatters'
 	import { createEventDispatcher } from 'svelte'
-	import Button from '../components/Button.svelte'
 	import TrackTimes from '$components/UI/components/TrackTimes.svelte'
 	import Card from '../components/Card.svelte'
-	import PlainButton from '../components/PlainButton.svelte'
-	import SpecialButton from '$components/+UI/components/SpecialButton.svelte'
+	import Button from '$components/+UI/components/Button.svelte'
 	import ButtonGroup from '../components/ButtonGroup/ButtonGroup.svelte'
 	import BlurryCard from '$components/+UI/components/BlurryCard.svelte';
 	import type { TrackData } from '$lib/TrackData/TrackData'
@@ -54,7 +52,7 @@
 			<div class="flex flex-col col-span-1 h-min overflow-auto text-[0.8em]">
 				{#each trackDatas as trackData, index}
 					{#if trackData}
-						<PlainButton
+						<Button
 							on:click={() => selectTrack(trackData.trackId)}
 							class={c(
 								'text-orange text-left px-[12px] py-[8px] hover:bg-blue-darker focus:bg-blue-darker outline-none',
@@ -64,7 +62,7 @@
 							)}
 						>
 							{trackData.trackName.current}
-						</PlainButton>
+						</Button>
 					{/if}
 				{/each}
 			</div>
@@ -100,14 +98,14 @@
 						</div>
 
 						{#if trackData.validated.current}
-							<SpecialButton
+							<Button
 								style="green-inverted"
 								on:click={() => {
 									dispatch('playtrack', { trackId: trackData.trackId })
 								}}
 							>
 								Play
-							</SpecialButton>
+							</Button>
 						{/if}
 					</div>
 
@@ -128,58 +126,58 @@
 					<div class="flex flex-row justify-end items-stretch mb-[2px]">
 						<ButtonGroup let:divider={Divider} class="text-[0.7em] !rounded-t-none !border-t-0">
 							{#if !trackData.validated.current && tracksCanBeValidated}
-								<PlainButton
+								<Button
 									on:click={() => {
 										dispatch('validatetrack', { trackId: trackData.trackId })
 									}}
 									class="font-mono uppercase tracking-wide px-2 py-1 text-blue-darkest bg-green-500/80 hover:bg-green-500 focus:bg-green-500"
 								>
 									Validate
-								</PlainButton>
+								</Button>
 								<Divider />
 							{/if}
 							{#if tracksCanBeEdited}
-								<PlainButton
+								<Button
 									on:click={() => {
 										dispatch('edittrack', { trackId: trackData.trackId })
 									}}
 									class="font-mono uppercase tracking-wide px-2 py-1 text-orange bg-blue-950/60 hover:bg-blue-950/80 focus:bg-blue-950/80"
 								>
 									Edit
-								</PlainButton>
+								</Button>
 								<Divider />
 							{/if}
 							{#if tracksCanBeDuplicated}
-								<PlainButton
+								<Button
 									class="font-mono uppercase tracking-wide px-2 py-1 text-orange bg-blue-950/60 hover:bg-blue-950/80 focus:bg-blue-950/80"
 									on:click={() => {
 										dispatch('duplicatetrack', { trackId: trackData.trackId })
 									}}
 								>
 									Duplicate
-								</PlainButton>
+								</Button>
 								<Divider />
 							{/if}
 							{#if tracksCanBeExported}
-								<PlainButton
+								<Button
 									class="font-mono uppercase tracking-wide px-2 py-1 text-orange bg-blue-950/60 hover:bg-blue-950/80 focus:bg-blue-950/80"
 									on:click={() => {
 										dispatch('exporttrack', { trackId: trackData.trackId })
 									}}
 								>
 									Export
-								</PlainButton>
+								</Button>
 								<Divider />
 							{/if}
 							{#if tracksCanBeDeleted}
-								<PlainButton
+								<Button
 									class="font-mono uppercase tracking-wide px-2 py-1 text-blue-darkest bg-red-500/80 hover:bg-red-500 focus:bg-red-500"
 									on:click={() => {
 										dispatch('deletetrack', { trackId: trackData.trackId })
 									}}
 								>
 									Delete
-								</PlainButton>
+								</Button>
 							{/if}
 						</ButtonGroup>
 					</div>

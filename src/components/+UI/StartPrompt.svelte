@@ -1,9 +1,8 @@
 <script lang="ts">
 	import { appState } from '$stores/app'
 	import UiWrapper from './UiWrapper.svelte'
-	import Button from './components/Button.svelte'
 	import Card from './components/Card.svelte'
-	import SpecialButton from '$components/+UI/components/SpecialButton.svelte'
+	import Button from '$components/+UI/components/Button.svelte'
 	import TextInput from './components/TextInput.svelte'
 
 	const { name } = appState.options.player
@@ -24,7 +23,7 @@
 						<TextInput forceFocusOnMount bind:value={playerName} label="Your Name" />
 					</div>
 
-					<SpecialButton
+					<Button
 						class="mb-[2px]"
 						style="inverted"
 						disabled={!playerName.length}
@@ -34,17 +33,17 @@
 						}}
 					>
 						Start
-					</SpecialButton>
+					</Button>
 				</Card>
 			{:else}
-				<SpecialButton
+				<Button
 					forceFocusOnMount
 					on:click={() => {
 						started = true
 					}}
 				>
 					Start
-				</SpecialButton>
+				</Button>
 			{/if}
 		</div>
 	</UiWrapper>

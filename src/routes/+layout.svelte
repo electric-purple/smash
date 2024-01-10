@@ -9,18 +9,12 @@
 <!-- ### -->
 
 <Header />
-<main>
+
+<main class="cover">
+	<!-- <slot name="canvas" /> -->
 	<slot />
 </main>
 
-<!-- ### -->
-
-<style>
-	main {
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+<div class="portal cover" id="portal-target">
+	<slot name="ui" />
+</div>

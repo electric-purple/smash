@@ -1,6 +1,6 @@
 <script lang="ts">
 	import TextInput from     '$components/+UI/components/TextInput.svelte';
-	import SpecialButton from '$components/+UI/components/SpecialButton.svelte';
+	import Button from '$components/+UI/components/Button.svelte';
 	import { useTrackEditor } from '../context'
 
 	const { trackData } = useTrackEditor()
@@ -17,7 +17,7 @@
 		bind:value={trackName}
 	/>
 
-	<SpecialButton
+	<Button
 		disabled={!trackName.length}
 		class="h-[46px] !rounded-l-none"
 		on:click={() => {
@@ -27,5 +27,5 @@
 		}}
 	>
 		Save
-	</SpecialButton>
+	</Button>
 </div>

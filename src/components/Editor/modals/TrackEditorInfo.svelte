@@ -1,28 +1,25 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte'
 	import TopBarLayout from  '$components/layout/TopBarLayout.svelte';
-	import UiWrapper from     '$components/+UI/UiWrapper.svelte';
-	import BackButton from    '$components/+UI/components/BackButton.svelte';
 	import BlurryCard from    '$components/+UI/components/BlurryCard.svelte';
 	import Card from          '$components/+UI/components/Card.svelte';
-	import SpecialButton from '$components/+UI/components/SpecialButton.svelte';
+	import Button from        '$components/+UI/components/Button.svelte';
 
 	const dispatch = createEventDispatcher<{ close: undefined }>();
 </script>
 
-<UiWrapper>
 	<!-- Prevent user interaction on canvas -->
 	<div class="absolute top-0 left-0 w-full h-full pointer-events-auto" />
 
 	<TopBarLayout>
-		<SpecialButton
+		<Button
 			slot="topbar-left"
 			on:click={() => {
 				dispatch('close')
 			}}
 		>
 			CLOSE
-		</SpecialButton>
+		</Button>
 
 		<BlurryCard class="h-full grid grid-cols-2 gap-[15px]">
 			<div class="flex flex-col gap-[15px] h-full items-stretch">
@@ -150,4 +147,3 @@
 			</Card>
 		</BlurryCard>
 	</TopBarLayout>
-</UiWrapper>

@@ -58,7 +58,7 @@
 		x: window.innerWidth / 2,
 		y: window.innerHeight / 2
 	}
-	let focusedElementCenterSpring = spring(focusedElementCenter)
+	// let focusedElementCenterSpring = spring(focusedElementCenter)
 	let lastCursorPosition: { x: number; y: number } = {
 		x: window.innerWidth / 2,
 		y: window.innerHeight / 2
@@ -70,7 +70,7 @@
 		focusedElement = element
 		await tick()
 		focusedElementCenter = getCenterOfElement(element)
-		focusedElementCenterSpring.set(focusedElementCenter)
+		// focusedElementCenterSpring.set(focusedElementCenter)
 		element.focus()
 	}
 
@@ -124,7 +124,7 @@
 			if (focusedElement === element) {
 				focusedElement = undefined
 				focusedElementCenter = lastCursorPosition
-				focusedElementCenterSpring.set(lastCursorPosition, { hard: true })
+				// focusedElementCenterSpring.set(lastCursorPosition, { hard: true })
 			}
 			return
 		}
@@ -157,7 +157,7 @@
 
 			focusedElement = undefined
 			focusedElementCenter = lastCursorPosition
-			focusedElementCenterSpring.set(lastCursorPosition, { hard: true })
+			// focusedElementCenterSpring.set(lastCursorPosition, { hard: true })
 		}
 	}
 
@@ -278,7 +278,7 @@
 			x: e.clientX,
 			y: e.clientY
 		}
-		focusedElementCenterSpring.set(focusedElementCenter, { hard: true })
+		// focusedElementCenterSpring.set(focusedElementCenter, { hard: true })
 		if (focusedElement) {
 			focusedElement.blur()
 			focusedElement = undefined
@@ -304,14 +304,14 @@
 
 <slot />
 
-{#if focusedElementCenter && navigationalElements.size > 0}
+<!-- {#if focusedElementCenter && navigationalElements.size > 0}
 	<UiWrapper>
 		<div
 			class="absolute top-0 left-0 w-8 h-8 z-50 bg-[url(/cursor.png)] bg-contain"
 			style="transform: translateX({$focusedElementCenterSpring.x}px) translateY({$focusedElementCenterSpring.y}px)"
 		/>
 	</UiWrapper>
-{/if}
+{/if} -->
 
 <style>
 	:global(body, button, input, select, textarea) {

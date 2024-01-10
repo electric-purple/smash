@@ -7,6 +7,10 @@
 	import { sunPos } from '$src/config'
 	import { useSuspense } from '@threlte/extras'
 
+
+  import { Environment } from '@threlte/extras';
+
+
 	const loadEnv = () => {
 		const loader = useLoader(RGBELoader)
 		return loader.load('/backgrounds/rustig_koppie_puresky_4k.hdr', {
@@ -81,6 +85,18 @@
 		textureLoader.load(['/lensflare/lensflare0.png', '/lensflare/lensflare3.png'])
 	)
 </script>
+
+
+
+<!-- #### -->
+
+<!-- <Environment
+	{path}
+	{files}
+	{isBackground}
+	groundProjection={{ radius, height, scale: [scale.x, scale.y, scale.z] }}
+/> -->
+
 
 <T.Group position.x={sunPos[0] * 1000} position.y={sunPos[1] * 1000} position.z={sunPos[2] * 1000}>
 	{#await elementTextures then textures}

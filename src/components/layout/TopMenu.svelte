@@ -1,8 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/stores'
-	import { c } from '../../../lib/utils/classes'
-	import PlainButton from '../components/PlainButton.svelte'
-	import SpecialButton from '$components/+UI/components/SpecialButton.svelte'
+	// import PlainButton from '../PlainButton.svelte'
+	import Button from '$components/+UI/components/Button.svelte'
 
 	$: isCampaign = $page.route.id?.includes('campaign') ?? false
 	$: isUserTracks = $page.route.id?.includes('user-tracks') ?? false
@@ -21,23 +20,23 @@
 	</div>
 
 	<div class="flex flex-row gap-[5px] justify-between">
-		<SpecialButton
+		<Button
 			href={isCampaign ? '/menu/main' : '/menu/campaign'}
 			class={c(isCampaign && '!bg-blue-dark')}
 		>
 			Campaign
-		</SpecialButton>
-		<SpecialButton
+		</Button>
+		<Button
 			href={isUserTracks ? '/menu/main' : '/menu/user-tracks'}
 			class={c(isUserTracks && '!bg-blue-dark')}
 		>
 			Your Tracks
-		</SpecialButton>
-		<SpecialButton
+		</Button>
+		<Button
 			href={isOptions ? '/menu/main' : '/menu/options'}
 			class={c(isOptions && '!bg-blue-dark')}
 		>
 			Options
-		</SpecialButton>
+		</Button>
 	</div>
 </div>

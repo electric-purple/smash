@@ -2,6 +2,6 @@
 	import DomPortal from '$components/+utils/DomPortal.svelte'
 </script>
 
-<DomPortal target="#car-ui-portal-target">
+<DomPortal target="#portal-target">
 	<slot />
 </DomPortal>
