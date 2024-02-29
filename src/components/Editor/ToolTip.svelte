@@ -1,21 +1,23 @@
-<div clss="tooltip">
+
+<div class="tooltip">
 	<slot />
 </div>
 
 <style>
-		/* class="hidden group-hover:flex absolute pr-[10px] left-0 top-0 -translate-x-full text-orange font-mono text-[0.6em] leading-[1em] h-full items-center w-auto whitespace-nowrap" */
-
-	div {
+	.tooltip {
 		display: none;
+		font-size: 0.875rem;
+		pointer-events: none;
 		position: absolute;
 		padding-right: 10px;
 		left: 0;
 		top: 0;
-		transform: translateX(100%);
+		/* transform: translateY(100%); */
 		color: orange;
 		height: 100%;
-		/* group-hover:flex  ... items-center w-auto whitespace-nowrap" */
 	}
 
-
+	:global(button:hover) .tooltip {
+		display: block;
+	}
 </style>

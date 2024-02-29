@@ -2,9 +2,8 @@
 /**
  * @see https://open-props.style/
  */
-/* @import "open-props/postcss/normalize"; */
 @import "open-props/normalize";
-/* @import "open-props/postcss/colors-hsl"; */
+@import "open-props/colors-hsl";
 
 :root {
 	font-family: var(--font-sans);
@@ -15,10 +14,10 @@ body {
 	/* background-color: var(--stone-1); */
 }
 
-article, section, header, .page, .spaced {
+/* article, section, header, .page, .spaced {
   display: grid;
   gap: var(--size-4);
-}
+} */
 
 article {
   place-content: center;
@@ -39,3 +38,5 @@ article {
   font-size: 22px;
   pointer-events: none;
 }
+
+/* .absolute { position: absolute; } */

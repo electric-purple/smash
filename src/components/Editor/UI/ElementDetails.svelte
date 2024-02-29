@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { DEG2RAD, RAD2DEG } from 'three/src/math/MathUtils'
-	import type { TrackElement } from '$lib/TrackData/TrackData'
+	import type { TrackElement } from '$src/levels/LevelData'
 	import { useTrackEditor } from '../context'
 
 	const { trackData } = useTrackEditor()
@@ -67,119 +67,88 @@
 	}
 </script>
 
+
 <div class="pointer-events-auto text-[0.65em]">
 	<div class="mb-[15px]">
-		<div>Position</div>
+		<div class="left">Position</div>
 		<label for="position.x">X</label>
 		<input
 			bind:this={elements.position.x}
-			on:focus={() => {
-				focus.position.x = true
-			}}
-			on:blur={() => {
-				focus.position.x = false
-			}}
+			on:focus={() => focus.position.x = true }
+			on:blur={() => focus.position.x = false }
+			on:input={(e) => updatePosition(0, Number(e.currentTarget.value)) }
 			on:keydown|stopPropagation
 			id="position.x"
 			type="number"
-			on:input={(e) => {
-				updatePosition(0, Number(e.currentTarget.value))
-			}}
 		/>
 		<label for="position.y">Y</label>
 		<input
 			bind:this={elements.position.y}
-			on:focus={() => {
-				focus.position.y = true
-			}}
-			on:blur={() => {
-				focus.position.y = false
-			}}
+			on:focus={() => focus.position.y = true }
+			on:blur={() => focus.position.y = false }
+			on:input={(e) => updatePosition(1, Number(e.currentTarget.value)) }
 			on:keydown|stopPropagation
 			id="position.y"
 			type="number"
-			on:input={(e) => {
-				updatePosition(1, Number(e.currentTarget.value))
-			}}
 		/>
 		<label for="position.z">Z</label>
 		<input
 			bind:this={elements.position.z}
-			on:focus={() => {
-				focus.position.z = true
-			}}
-			on:blur={() => {
-				focus.position.z = false
-			}}
+			on:focus={() => focus.position.z = true }
+			on:blur={() => focus.position.z = false }
+			on:input={(e) => updatePosition(2, Number(e.currentTarget.value)) }
 			on:keydown|stopPropagation
 			id="position.z"
 			type="number"
-			on:input={(e) => {
-				updatePosition(2, Number(e.currentTarget.value))
-			}}
 		/>
 	</div>
 
 	<div>
-		<div>Rotation</div>
+		<div class="left">Rotation</div>
 		<label for="rotation.x">X</label>
 		<input
 			bind:this={elements.rotation.x}
-			on:focus={() => {
-				focus.rotation.x = true
-			}}
-			on:blur={() => {
-				focus.rotation.x = false
-			}}
+			on:focus={() => focus.rotation.x = true }
+			on:blur={() => focus.rotation.x = false }
+			on:input={(e) => updateRotation(0, Number(e.currentTarget.value)) }
 			on:keydown|stopPropagation
 			id="rotation.x"
 			type="number"
-			on:input={(e) => {
-				updateRotation(0, Number(e.currentTarget.value))
-			}}
 		/>
 		<label for="rotation.y">Y</label>
 		<input
 			bind:this={elements.rotation.y}
-			on:focus={() => {
-				focus.rotation.y = true
-			}}
-			on:blur={() => {
-				focus.rotation.y = false
-			}}
+			on:focus={() => focus.rotation.y = true }
+			on:blur={() => focus.rotation.y = false }
+			on:input={(e) => updateRotation(1, Number(e.currentTarget.value)) }
 			on:keydown|stopPropagation
 			id="rotation.y"
 			type="number"
-			on:input={(e) => {
-				updateRotation(1, Number(e.currentTarget.value))
-			}}
 		/>
 		<label for="rotation.z">Z</label>
 		<input
 			bind:this={elements.rotation.z}
-			on:focus={() => {
-				focus.rotation.z = true
-			}}
-			on:blur={() => {
-				focus.rotation.z = false
-			}}
+			on:focus={() => focus.rotation.z = true }
+			on:blur={() => focus.rotation.z = false }
+			on:input={(e) => updateRotation(2, Number(e.currentTarget.value)) }
 			on:keydown|stopPropagation
 			id="rotation.z"
 			type="number"
-			on:input={(e) => {
-				updateRotation(2, Number(e.currentTarget.value))
-			}}
 		/>
 	</div>
 </div>
 
+
 <style>
+	.left { float: left; padding-right: 1rem; }
+
 	input {
 		/* @apply w-[10ch] rounded-sm bg-[#e8e8e8] px-[2px] py-[2px] focus:bg-[#d6d6d6] focus:outline-none; */
 		background: var(--surface-3);
-		border-radius: var(--radius-3);
-		padding: var(--size-4);
-		width: var(--size-14);
+		/* border-radius: var(--radius-3); */
+		/* padding: var(--size-4); */
+		/* width: var(--size-14); */
+		font-size: var(--font-size-1);
 	}
 	input:focus {
 		background: var(--gray-3)

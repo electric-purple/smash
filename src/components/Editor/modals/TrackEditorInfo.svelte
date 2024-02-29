@@ -1,23 +1,31 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte'
+	import { T, currentWritable } from '@threlte/core'
 	import TopBarLayout from  '$components/layout/TopBarLayout.svelte';
 	import BlurryCard from    '$components/+UI/components/BlurryCard.svelte';
 	import Card from          '$components/+UI/components/Card.svelte';
 	import Button from        '$components/+UI/components/Button.svelte';
 
 	const dispatch = createEventDispatcher<{ close: undefined }>();
+
+
+	const showInfo = currentWritable(false);
 </script>
 
 	<!-- Prevent user interaction on canvas -->
-	<div class="absolute top-0 left-0 w-full h-full pointer-events-auto" />
+	<!-- <div class="absolute top-0 left-0 w-full h-full pointer-events-auto" /> -->
 
+
+<Button on:click={() => showInfo.set(true)}>Info</Button>
+
+
+{#if $showInfo}
 	<TopBarLayout>
 		<Button
 			slot="topbar-left"
-			on:click={() => {
-				dispatch('close')
-			}}
+      on:click={() => showInfo.set(false)}
 		>
+			<!-- on:click={() => dispatch('close')} -->
 			CLOSE
 		</Button>
 
@@ -147,3 +155,4 @@
 			</Card>
 		</BlurryCard>
 	</TopBarLayout>
+{/if}

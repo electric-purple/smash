@@ -36,13 +36,18 @@
 
 <style>
 	button {
-		padding: var(--size-4);
-		z-index: var(--layer-important);
+		padding: var(--size-2);
+		/* z-index: var(--layer-important); */
+		/* position: relative; */
+		position: fixed;
+		right: 0;
+		top:0;
+		z-index: var(--layer-5);
 	}
 
 	svg {
-		width: var(--size-8);
-		height: var(--size-8);
+		width: var(--size-5);
+		height: var(--size-5);
 	}
 
 	nav {
@@ -52,11 +57,13 @@
 		padding: var(--size-7) var(--size-2);
 		position: absolute;
 		/* left: 0; */
+		right: 0;
+		top: 0;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 
-    animation: var(--animation-slide-out-left) forwards;
+    animation: var(--animation-slide-out-right) forwards;
 	}
 
 	ul {
@@ -71,6 +78,6 @@
 	}
 
 	.isOpen {
-		animation: var(--animation-slide-in-right) forwards;
+		animation: var(--animation-slide-in-left) forwards;
 	}
 </style>

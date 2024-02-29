@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte'
+	import { T, currentWritable } from '@threlte/core'
 	import TopBarLayout from  '$components/layout/TopBarLayout.svelte';
 	import Card from          '$components/+UI/components/Card.svelte';
 	import BlurryCard from    '$components/+UI/components/BlurryCard.svelte';
@@ -9,21 +10,23 @@
 	import StartTrackValidation from '../UI/StartTrackValidation.svelte'
 	import TrackDetails from '../UI/TrackDetails.svelte'
 
-	const dispatch = createEventDispatcher<{
-		close: undefined
-	}>()
+	const dispatch = createEventDispatcher<{ close: undefined }>()
+
+
+	const showMenu = currentWritable(false);
 </script>
 
 	<!-- Prevent user interaction on canvas -->
 	<div class="absolute top-0 left-0 w-full h-full pointer-events-auto" />
 
+{#if $showMenu}
+
 	<TopBarLayout>
 		<Button
 			slot="topbar-left"
-			on:click={() => {
-				dispatch('close')
-			}}
+      on:click={() => showMenu.set(false)}
 		>
+			<!-- on:click={() => dispatch('close')} -->
 			CLOSE
 		</Button>
 
@@ -51,3 +54,8 @@
 			</Card>
 		</BlurryCard>
 	</TopBarLayout>
+
+{/if}
+
+<Button on:click={() => showMenu.set(true)}>Menu</Button>
+
