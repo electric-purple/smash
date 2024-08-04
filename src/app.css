@@ -4,6 +4,7 @@
  */
 @import "open-props/normalize";
 @import "open-props/colors-hsl";
+@import "open-props/fonts";
 
 :root {
 	font-family: var(--font-sans);

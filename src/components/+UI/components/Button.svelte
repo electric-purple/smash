@@ -57,10 +57,10 @@
 	on:pointerenter={onPointerEnter}
 	on:click={onClick}
 	on:click
-	class={c(
-		'pointer-events-auto group',
-		'text-sm text-center rounded-xl border-3 border-current normal-case flex flex-row gap-2 items-center justify-center [&_img]:block [&_img]:p-[2px] outline-none px-3 py-1 leading-none',
-		'[&_img]:h-[1em] [&_img]:w-[1em]',
+	class={c('button',
+		// 'pointer-events-auto group',
+		// 'text-sm text-center rounded-xl border-3 border-current normal-case flex flex-row gap-2 items-center justify-center [&_img]:block [&_img]:p-[2px] outline-none px-3 py-1 leading-none',
+		// '[&_img]:h-[1em] [&_img]:w-[1em]',
 		'[&_svg]:!fill-current [&_svg]:h-[1em] [&_svg]:w-[1em]',
 		styles[style],
 		_class
@@ -70,14 +70,32 @@
 </button>
 
 <style>
+
+	.button {
+		font-size: var(-font-size-2);
+		text-align: center;
+		/* outline-none px-3 py-1 leading-none', */
+		/* normal-case  */
+		/* border: rounded-xl border-3 border-current  */
+		border: var(--border-size-1) solid var(--gray-1);
+		border-radius: var(--radius-1);
+
+		display: flex;
+		flex-direction: row;
+		gap: var(--size-2 );
+		align-items: center;
+		justify-content: center;
+	}
+
   button {
 		pointer-events: auto;
 	}
-	/* &:hover > .tooltip { display:flex; } */
 
 	button :global(img) {
-		height: 1em;
-		width: 1em;
+		display: block;
+		/* padding: var(--size-2); */
+		height: var(--size-8); /* //1em; */
+		width: var(--size-8); /*1em;*/
 	}
 
 	button :global(svg) {
@@ -85,5 +103,4 @@
 		height: 1em;
 		width: 1em;
 	}
-
 </style>

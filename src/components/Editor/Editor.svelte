@@ -106,24 +106,24 @@
 		cameraControls.current[1].polarAngle = angles[editView].polarAngle
 	}
 
-	function focusCurrentlySelectedElement() {
+	function focusSelectedElement() {
 		if (!$activeCameraControls || !$currentlySelectedElement) return;
 		$activeCameraControls.moveTo(...$currentlySelectedElement!.position.current, true)
 		$activeCameraControls.dollyTo(50, true)
 		$activeCameraControls.setFocalOffset(0, 0, 0, true)
 	}
 
-	function setEditView(view: 'x' | 'y' | 'z') {
-		editView.update((currentView) => {
-			if (currentView === 'x' && view === 'x') return 'x-inverse'
-			else if (view === 'x') return 'x'
-			else if (currentView === 'y' && view === 'y') return 'y-inverse'
-			else if (view === 'y') return 'y'
-			else if (currentView === 'z' && view === 'z') return 'z-inverse'
-			else if (view === 'z') return 'z'
-			else return currentView
-		})
-	};
+	// function setEditView(view: 'x' | 'y' | 'z') {
+	// 	editView.update((currentView) => {
+	// 		if (currentView === 'x' && view === 'x') return 'x-inverse'
+	// 		else if (view === 'x') return 'x'
+	// 		else if (currentView === 'y' && view === 'y') return 'y-inverse'
+	// 		else if (view === 'y') return 'y'
+	// 		else if (currentView === 'z' && view === 'z') return 'z-inverse'
+	// 		else if (view === 'z') return 'z'
+	// 		else return currentView
+	// 	})
+	// };
 
 
 	useKeyDown('Shift', () => {
@@ -188,7 +188,7 @@
 	});
 
 	useKeyDown('Shift+F', () => {
-		focusCurrentlySelectedElement()
+		focusSelectedElement()
 	});
 
 	useKeyDown('Control+Backspace', () => {
@@ -198,20 +198,20 @@
 	})
 
 	// edit view
-	useKeyDown('x', () => {
-		if ($view !== 'edit') return
-		setEditView('x')
-	});
+	// useKeyDown('x', () => {
+	// 	if ($view !== 'edit') return
+	// 	setEditView('x')
+	// });
 
-	useKeyDown('y', () => {
-		if ($view !== 'edit') return
-		setEditView('y')
-	});
+	// useKeyDown('y', () => {
+	// 	if ($view !== 'edit') return
+	// 	setEditView('y')
+	// });
 
-	useKeyDown('z', () => {
-		if ($view !== 'edit') return
-		setEditView('z')
-	});
+	// useKeyDown('z', () => {
+	// 	if ($view !== 'edit') return
+	// 	setEditView('z')
+	// });
 
 	useKeyDown('o', () => {
 		if ($view !== 'edit') return
@@ -265,7 +265,7 @@
 				</Button>
 
 				<!-- Focus -->
-				<Button on:click={focusCurrentlySelectedElement}>
+				<Button on:click={focusSelectedElement}>
 					<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="#000000" viewBox="0 0 256 256">
 						<path d="M196,157.43V98.57a17,17,0,0,0-8.42-14.71L136.24,54.21a16.55,16.55,0,0,0-16.48,0L68.43,83.86A17,17,0,0,0,60,98.57v58.86a17,17,0,0,0,8.42,14.71l51.34,29.65a16.53,16.53,0,0,0,16.48,0l51.33-29.65A17,17,0,0,0,196,157.43ZM128,77.17,160.59,96,128,114.81,95.41,96Zm-44,40,32,18.48v36.3L84,153.42Zm56,54.78V135.6l32-18.48v36.3ZM236,48V88a12,12,0,0,1-24,0V60H184a12,12,0,0,1,0-24h40A12,12,0,0,1,236,48ZM84,208a12,12,0,0,1-12,12H32a12,12,0,0,1-12-12V168a12,12,0,0,1,24,0v28H72A12,12,0,0,1,84,208Zm152-40v40a12,12,0,0,1-12,12H184a12,12,0,0,1,0-24h28V168a12,12,0,0,1,24,0ZM20,88V48A12,12,0,0,1,32,36H72a12,12,0,0,1,0,24H44V88a12,12,0,0,1-24,0Z" />
 					</svg>
@@ -273,12 +273,12 @@
 				</Button>
 
 				<!-- Orbit -->
-				<Button on:click={() => ($editView = 'orbit')}>
+				<!-- <Button on:click={() => ($editView = 'orbit')}>
 					<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="#000000" viewBox="0 0 256 256">
 						<path d="M244,56v48a12,12,0,0,1-12,12H184a12,12,0,1,1,0-24H201.1l-19-17.38c-.13-.12-.26-.24-.38-.37A76,76,0,1,0,127,204h1a75.53,75.53,0,0,0,52.15-20.72,12,12,0,0,1,16.49,17.45A99.45,99.45,0,0,1,128,228h-1.37A100,100,0,1,1,198.51,57.06L220,76.72V56a12,12,0,0,1,24,0Z" />
 					</svg>
 					<ToolTip>Orbit</ToolTip>
-				</Button>
+				</Button> -->
 			</div>
 
 			<div class="absolute bottom-0 left-0">
@@ -376,10 +376,7 @@
 
 <Car freeze={carFrozen} active={carActive} useCarCamera={carActive} volume={carActive ? 1 : 0} />
 
-<T.PerspectiveCamera
-	makeDefault={$view === 'edit' && $editView === 'orbit'}
-	position={[50, 50, 50]}
->
+<T.PerspectiveCamera makeDefault={$view === 'edit'} position={[50, 50, 50]}>
 	<CameraControls
 		enabled={cameraControlsActive && !useOrthoCam}
 		smoothTime={0.1}
